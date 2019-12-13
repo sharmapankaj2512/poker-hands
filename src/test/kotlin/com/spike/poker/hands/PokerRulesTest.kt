@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test
 
 internal class PokerRulesTest {
     @Test
-    fun score_highHand() {
+    fun highHand_score_shouldBeSameAsTheMaxValue() {
         val rules = PokerRules(setOf(HighCard()))
-        val cards = setOf(Card(1), Card(3))
+        val cards = setOf(Card(1), Card(10))
 
-        assertEquals(3, rules.score(cards))
+        assertEquals(10, rules.score(cards))
     }
 }

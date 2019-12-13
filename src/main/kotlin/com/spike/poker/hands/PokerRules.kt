@@ -1,6 +1,6 @@
 package com.spike.poker.hands
 
-class PokerRules(private val rules: Set<PokerRule>) {
+class PokerRules(val rules: Set<PokerRule>) {
     fun score(cards: Set<Card>): Int {
         return rules.first().score(cards)
     }
@@ -8,7 +8,7 @@ class PokerRules(private val rules: Set<PokerRule>) {
 
 class HighCard : PokerRule {
     override fun score(cards: Set<Card>): Int {
-        return 1 * cards.map { it.value }.max()!!
+        return cards.map { it.value }.max()!!
     }
 }
 
