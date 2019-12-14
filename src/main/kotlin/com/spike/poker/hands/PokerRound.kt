@@ -2,14 +2,16 @@ package com.spike.poker.hands
 
 import com.spike.poker.hands.Result.*
 
-class PokerRound(private val first: Hand, val second: Hand, private val rules: PokerRules) {
+class PokerRound(private val first: Hand,
+                 private val second: Hand,
+                 private val rules: PokerRules) {
     fun winner(): Result {
-        val firstHandScore = rules.score(first.cards)
-        val secondHandScore = rules.score(second.cards)
+        val firstHandScore = rules.score(first)
+        val secondHandScore = rules.score(second)
 
-        if (firstHandScore == secondHandScore) return Tie
         if (firstHandScore > secondHandScore) return Winner(first)
-        return Winner(second)
+        if (firstHandScore < secondHandScore) return Winner(second)
+        return Tie
     }
 }
 
