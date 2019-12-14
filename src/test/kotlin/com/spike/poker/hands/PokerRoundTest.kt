@@ -55,6 +55,18 @@ class PokerRoundTest {
                         assertEquals(Winner(ninjaHand), round.winner())
                     }
                 }
+
+                @Nested
+                inner class AndWhenBatmanRevealsAPair {
+                    private val batmanHand = Hand(batman, setOf(Card(1), Card(1)))
+
+                    @Test
+                    fun thenBatmanWinsThePokerRound() {
+                        val round = PokerRound(ninjaHand, batmanHand, rules)
+
+                        assertEquals(Winner(batmanHand), round.winner())
+                    }
+                }
             }
         }
     }
