@@ -12,9 +12,21 @@ class HighCard : PokerRule {
     }
 
     override fun isApplicable(cards: Set<Card>): Boolean {
-        val values = cards.map { it.value }
+        val values = cards.map { it.value }.distinct()
         return cards.isNotEmpty() && values.size == cards.size
     }
+}
+
+class Pair : PokerRule {
+    override fun score(cards: Set<Card>): Int {
+        return 15 * cards.map { it.value }.max()!!
+    }
+
+    override fun isApplicable(cards: Set<Card>): Boolean {
+        val values = cards.map { it.value }.distinct()
+        return cards.isNotEmpty() && values.size == cards.size - 1
+    }
+
 }
 
 interface PokerRule {

@@ -14,7 +14,7 @@ class PokerRoundTest {
 
         @Nested
         inner class AndPokerRules {
-            val rules = PokerRules(setOf(HighCard()))
+            val rules = PokerRules(setOf(HighCard(), Pair()))
 
             @Nested
             inner class WhenNinjaRevealsAHighCard {
@@ -57,7 +57,7 @@ class PokerRoundTest {
                 }
 
                 @Nested
-                inner class AndWhenBatmanRevealsAPair {
+                inner class AndWhenBatmanRevealsAPair() {
                     private val batmanHand = Hand(batman, setOf(Card(1), Card(1)))
 
                     @Test

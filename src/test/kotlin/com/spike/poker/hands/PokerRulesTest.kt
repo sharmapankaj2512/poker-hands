@@ -18,4 +18,12 @@ internal class PokerRulesTest {
 
         assertEquals(0, rules.score(setOf()))
     }
+
+    @Test
+    fun score_shouldBeCalculatedBasedOnPairRule() {
+        val rules = PokerRules(setOf(HighCard(), Pair()))
+        val cards = setOf(Card(1), Card(1))
+
+        assertEquals(15, rules.score(cards))
+    }
 }
